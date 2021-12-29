@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block main %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-dark mb-5" data-toggle="modal" style="position:absolute; border:2px solid #000; right:50%; " data-target="#exampleModal">
+  Add Blog
+</button><br><br>
+    <div class="container bg-white my-5" style="width:100%;">
+  {% for form in forms %}
+        <u><h2 class="my-4" style="font-size:60px;">{{form.title}}</h2></u>
+        <p style="font-size:20px;">{{form.content}}</p>
+        <center><img src="{{form.image.url}}" style="width:60%;" alt=""><br/></center>
+        <center><a href="/deleteBlog/{{ form.id}}" class="btn btn-danger my-5" style="width:30%;">Delete Blog</a>
+        <a href="/edit/{{ form.id}}" class="btn btn-danger my-5" style="width:30%;">Edit Blog</a>
+        </center><br>
+  {% endfor %}
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     <form action="" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+           <div class="form-group">
+             {{i_form | bootstrap_horizontal}}
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block main %}
+<div class="container">
+    <center><h2 style="font-size:25px; color:#fff;">Edit Your Blog :)</h2></center><br/>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="title"><br/><br/>
+        <textarea name="content"  cols="30" rows="10" placeholder="Write Content"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Wirte Content"></textarea><br/><br/>
+        <input type="file" id="myfile" name="image"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <button type="submit" class="btn btn-danger">Update</button>
+    </form>
+</div>
+{% endblock %}
